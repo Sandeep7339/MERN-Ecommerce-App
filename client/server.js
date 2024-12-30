@@ -3,11 +3,14 @@ import colors from "colors";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import connectDB from "./config/db.js";
-import authRoutes from './routes/authRoute.js'
-import categoryRoutes from './routes/categoryRoutes.js'
-import productRoutes from './routes/productRoutes.js'
-import path from 'path';  // Updated to use import
+import authRoutes from './routes/authRoute.js';
+import categoryRoutes from './routes/categoryRoutes.js';
+import productRoutes from './routes/productRoutes.js';
+import path from 'path';
 import cors from 'cors';
+
+// Get the directory name using import.meta.url
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 // Configure store
 dotenv.config();
