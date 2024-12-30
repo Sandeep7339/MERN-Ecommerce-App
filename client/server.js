@@ -6,38 +6,40 @@ import connectDB from "./config/db.js";
 import authRoutes from './routes/authRoute.js'
 import categoryRoutes from './routes/categoryRoutes.js'
 import productRoutes from './routes/productRoutes.js'
-const path=require('path')
-import cors from 'cors'
-//configure store
+import path from 'path';  // Updated to use import
+import cors from 'cors';
+
+// Configure store
 dotenv.config();
 
-//database config
-connectDB()
+// Database config
+connectDB();
 
-//rest object 
+// Rest object 
 const app = express();
 
-//middleware
-app.use(cors())
+// Middleware
+app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
+// Static folder
+app.use(express.static(path.join(__dirname, './client/build')));
 
-//static folder
-app.use(express.static(path.join(__dirname,'./client/build')))
-//routes
-app.use('/api/v1/auth',authRoutes)
-app.use('/api/v1/category',categoryRoutes)
-app.use('/api/v1/product',productRoutes)
+// Routes
+app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/category', categoryRoutes);
+app.use('/api/v1/product', productRoutes);
 
-app.get('*',(req,res)=>{
-  res.sendFile(path.join(__dirname,'./client/build/index.html'))
-})
-app.get("/", (req, res) => {
-  res.send({ message: "welcome to express app" });
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
 });
 
-//port
+app.get("/", (req, res) => {
+  res.send({ message: "Welcome to Express app" });
+});
+
+// Port
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on ${PORT}`.bgCyan.white);
