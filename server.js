@@ -6,6 +6,8 @@ import connectDB from "./config/db.js";
 import authRoutes from './routes/authRoute.js'
 import categoryRoutes from './routes/categoryRoutes.js'
 import productRoutes from './routes/productRoutes.js'
+import { fileURLToPath } from 'url';
+
 import path from 'path';
 import cors from 'cors'
 const __filename = fileURLToPath(import.meta.url);
