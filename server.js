@@ -8,6 +8,9 @@ import categoryRoutes from './routes/categoryRoutes.js'
 import productRoutes from './routes/productRoutes.js'
 import path from 'path';
 import cors from 'cors'
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 //configure store
 dotenv.config();
 
