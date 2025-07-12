@@ -6,7 +6,7 @@ import connectDB from "./config/db.js";
 import authRoutes from './routes/authRoute.js'
 import categoryRoutes from './routes/categoryRoutes.js'
 import productRoutes from './routes/productRoutes.js'
-const path=require('path')
+import path from 'path';
 import cors from 'cors'
 //configure store
 dotenv.config();
